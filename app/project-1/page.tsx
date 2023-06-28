@@ -27,8 +27,9 @@ const ButtonSettings = () => {
 };
 
 export default function Page() {
-  const [secondsLeft, setSecondsLeft] = useState(.2 * 60);
+  const [secondsLeft, setSecondsLeft] = useState(.1 * 60);
 	const [isActive, setIsActive] = useState(false);
+  const [isDone, setIsDone] = useState(false);
 
 	useEffect(() => {
 		if (isActive) {
@@ -39,6 +40,7 @@ export default function Page() {
       if (secondsLeft === 0) {
         clearInterval(interval);
         setIsActive(false);
+        setIsDone(true);
       }
 
 			return () => clearInterval(interval);
@@ -55,12 +57,12 @@ export default function Page() {
     setIsActive(prevState => !prevState);
   }
 
-  const buttonLabel = isActive ? "PAUSE" : secondsLeft === 0 ? "DONE" : "START";
+  const buttonLabel = isActive ? "STOP" : secondsLeft === 0 ? "DONE" : "START";
 
   return (
     <main className={styles.main}>
       <div className={styles.wrapper}>
-        <div className={`${styles.ring} ${isActive ? styles.active : ""}`}>
+        <div className={`${styles.ring} ${isActive ? styles.active : ""} ${isDone ? styles.done : ""}`}>
           <svg width="518" height="518" viewBox="0 0 518 518">
             <circle
                 strokeWidth="9px"
@@ -76,7 +78,7 @@ export default function Page() {
           <TimerDisplay
             timeLeft={formatTimeLeft(secondsLeft)}
           />
-          <button className={styles.timerToggle} style={mont.style} onClick={handleClick}>{buttonLabel}</button>
+          <button className={styles.timerToggle} style={mont.style} onClick={handleClick} disabled={isDone}>{buttonLabel}</button>
           <ButtonSettings />
         </div>
       </div>
