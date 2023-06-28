@@ -47,14 +47,14 @@
 		--background-end-rgb: 0, 0, 0;
 
 		--primary-glow: radial-gradient(
-			rgba(1, 65, 255, 0.4),
-			rgba(1, 65, 255, 0)
+			rgba(1, 217, 255, 0.4),
+			rgba(1, 255, 221, 0)
 		);
 		--secondary-glow: linear-gradient(
 			to bottom right,
-			rgba(1, 65, 255, 0),
-			rgba(1, 65, 255, 0),
-			rgba(1, 65, 255, 0.3)
+			rgba(1, 255, 255, 0),
+			rgba(1, 221, 255, 0),
+			rgba(1, 225, 255, 0.3)
 		);
 
 		--tile-start-rgb: 2, 13, 46;
