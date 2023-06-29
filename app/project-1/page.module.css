@@ -68,7 +68,7 @@
 	top: 30px;
 }
 
-.time input[type="text"] {
+.time input[type="number"] {
 	border: 0;
 	border-bottom: 1px dashed white;
 	background: none;
@@ -79,9 +79,17 @@
 	width: 150px;
 	text-align: center;
 	outline: none;
+	appearance: none;
+	-moz-appearance: textfield;
 }
 
-.time input[type="text"]:disabled {
+.time input::-webkit-outer-spin-button,
+.time input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.time input[type="number"]:disabled {
 	border-bottom: none;
 }
 
