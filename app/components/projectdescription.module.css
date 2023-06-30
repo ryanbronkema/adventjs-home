@@ -1,20 +1,21 @@
 .description {
-	display: inherit;
-	justify-content: inherit;
-	align-items: inherit;
-	font-size: 0.85rem;
-	max-width: var(--max-width);
-	width: 100%;
-	z-index: 2;
-	font-family: var(--font-mono);
-	line-height: 1.5;
+	flex: 2;
+	margin: 1rem;
+	text-align: left;
+}
+
+.description h1 {
+	margin-bottom: 0.75rem;
 }
 
 .description p {
 	position: relative;
+	font-size: 0.85rem;
 	margin: 0;
 	padding: 1rem;
 	background-color: rgba(var(--callout-rgb), 0.5);
 	border: 1px solid rgba(var(--callout-border-rgb), 0.3);
 	border-radius: var(--border-radius);
+	font-family: var(--font-mono);
+	line-height: 1.5;
 }

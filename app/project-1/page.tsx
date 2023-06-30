@@ -1,15 +1,14 @@
-'use client'
-
 import BackArrow from '../components/backarrow';
 import ProjectDescription from '../components/projectdescription';
+import styles from './page.module.css';
 import Timer from './timer';
 
 export default function Page() {
   return (
-    <div>
+    <div className={styles.projectContainer}>
       <BackArrow />
       <Timer />
-      <ProjectDescription title="Pomodoro Timer" description="Test description" />
+      <ProjectDescription pageTitle="Pomodoro Timer" pageDescription="Test description lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum" />
     </div>
   );
 }
