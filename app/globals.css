@@ -108,3 +108,13 @@ a {
 		color-scheme: dark;
 	}
 }
+
+.d-flex {
+	display: flex;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}

@@ -5,7 +5,7 @@ export default function ProjectDescription(props: {
     pageDescription: string
   }) {
   return (
-    <div className={styles.description}>
+    <div className={styles.descriptionWrap}>
       <h1>{props.pageTitle}</h1>
       <p>{props.pageDescription}</p>
     </div>

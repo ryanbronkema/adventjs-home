@@ -31,7 +31,6 @@ export default function Home() {
         />
       </div>
 
-
       <div>
         <h2 className={`${styles.center} ${styles.heading}`}>Most recent</h2>
         <div className={styles.grid}>
@@ -39,14 +38,14 @@ export default function Home() {
             <h3>
               Pomodoro timer <span>-&gt;</span>
             </h3>
-            <p>A timer with a start/stop/reset options and a moving color band.</p>
+            <p>A countdown timer that can be started, paused, and set to an custom duration.</p>
           </Link>
 
           <Link href="/project-2/" className={styles.card}>
             <h3>
-              Project 2 <span>-&gt;</span>
+              E-commerce component <span>-&gt;</span>
             </h3>
-            <p>Blah blah blah...</p>
+            <p>A menu and cart with a cost total that updates dynamically.</p>
           </Link>
 
           <Link href="/project-3/" className={styles.card}>

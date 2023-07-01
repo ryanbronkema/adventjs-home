@@ -1,6 +1,7 @@
 .arrowWrap {
-	flex: 2;
-	margin: 1rem;
+	position: absolute;
+	top: 1rem;
+	left: 3%;
 	display: flex;
 	justify-content: flex-end;
 }

@@ -1,14 +1,14 @@
 import BackArrow from '../components/backarrow';
 import ProjectDescription from '../components/projectdescription';
-import Timer from './timer';
+import Menu from './menu';
 
 export default function Page() {
   return (
     <div>
       <BackArrow />
-      <Timer />
+      <Menu />
       <ProjectDescription 
-        pageTitle="Pomodoro Timer" 
+        pageTitle="E-commerce component"
         pageDescription="Test description lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
       />
     </div>

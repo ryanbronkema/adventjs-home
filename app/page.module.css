@@ -51,11 +51,15 @@
 .card span {
 	display: inline-block;
 	transition: transform 200ms;
+	flex: 0 0 18px;
+	white-space: nowrap;
 }
 
 .card h3 {
 	font-weight: 600;
 	margin-bottom: 0.7rem;
+	display: flex;
+	justify-content: space-between;
 }
 
 .card p {
