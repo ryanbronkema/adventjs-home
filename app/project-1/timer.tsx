@@ -16,11 +16,11 @@ const TimerDisplay = (
   return (
     <div className={styles.time} style={bebas.style}>
       <div className={styles.minutes}>
-        <input type="number" value={props.minutesLeft} disabled={!props.editMode} onChange={(e) => props.onMinutesChange(e.target.value)} />
+        <input type="number" value={props.minutesLeft} disabled={!props.editMode} onChange={(e) => props.onMinutesChange(parseInt(e.target.value))} />
       </div>
       <div className={styles.colon}>:</div>
       <div className={styles.seconds}>
-        <input type="number" value={props.secondsLeft} disabled={!props.editMode} onChange={(e) => props.onSecondsChange(e.target.value)} />
+        <input type="number" value={props.secondsLeft} disabled={!props.editMode} onChange={(e) => props.onSecondsChange(parseInt(e.target.value))} />
       </div>
     </div>
   );
@@ -30,7 +30,7 @@ export default function Timer() {
   const [secondsLeft, setSecondsLeft] = useState(15 * 60);
   const [isActive, setIsActive] = useState(false);
   const [isDone, setIsDone] = useState(false);
-  const [audio] = useState(typeof Audio !== 'undefined' && new Audio('https://www.soundjay.com/misc/sounds/magic-chime-02.mp3'));
+  const [audio] = useState(typeof Audio !== 'undefined' ? new Audio('https://www.soundjay.com/misc/sounds/magic-chime-02.mp3') : false);
   const [editMode, setEditMode] = useState(false);
   const [editedMinutes, setEditedMinutes] = useState(0);
   const [editedSeconds, setEditedSeconds] = useState(0);
@@ -62,7 +62,9 @@ export default function Timer() {
         clearInterval(interval);
         setIsActive(false);
         setIsDone(true);
-        audio.play();
+        if (audio instanceof HTMLAudioElement) {
+          audio.play();
+        }
       }
 
       return () => clearInterval(interval);
