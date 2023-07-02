@@ -4,9 +4,29 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { poppins } from '../fonts';
 import './menu.css';
+import Totals from './totals';
 
 export default function Menu() {
+  const [subtotal, setSubtotal] = useState(0);
     
+  useEffect(() => {
+    calculateSubtotal();
+  }, []);
+
+  const calculateSubtotal = () => {
+    const subtotalElements = document.getElementsByClassName('subtotal');
+    let sum = 0;
+
+    for (let i = 0; i < subtotalElements.length; i++) {
+      const subtotalValue = parseFloat(subtotalElements[i].innerHTML.replace('$', ''));
+      if (!isNaN(subtotalValue)) {
+        sum += subtotalValue;
+      }
+    }
+
+    setSubtotal(sum);
+  };
+  
   return (
     <main className="main">
       <div className="wrapper menu">
@@ -102,9 +122,7 @@ export default function Menu() {
                   <img src="images/chevron.svg" />
                 </button>
               </div>
-              <div className="subtotal">
-                $6.34
-              </div>
+              <div className="subtotal">$6.34</div>
             </li>
 
             <li>
@@ -125,26 +143,13 @@ export default function Menu() {
                   <img src="images/chevron.svg" />
                 </button>
               </div>
-              <div className="subtotal">
-                  $4.46
-              </div>
+              <div className="subtotal">$4.46</div>
               </li>
           </ul>
 
-          <div className="totals">
-            <div className="line-item">
-              <div className="label">Subtotal:</div>
-              <div className="amount price subtotal">$10.80</div>
-            </div>
-            <div className="line-item">
-              <div className="label">Tax:</div>
-              <div className="amount price tax">$1.05</div>
-            </div>
-            <div className="line-item total">
-              <div className="label">Total:</div>
-              <div className="amount price total">$11.85</div>
-            </div>
-          </div>
+          <Totals 
+            subtotal={subtotal}
+          />
         </div>
       </div>
     </main>
