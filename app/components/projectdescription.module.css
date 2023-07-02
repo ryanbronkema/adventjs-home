@@ -3,21 +3,22 @@
 	top: 5rem;
 	left: 3%;
 	text-align: left;
-	max-width: 220px;
+	max-width: 250px;
+	margin: 0;
+	padding: 1rem;
+	background-color: rgba(var(--callout-rgb), 0.5);
+	border: 1px solid rgba(var(--callout-border-rgb), 0.3);
+	border-radius: var(--border-radius);
 }
 
 .descriptionWrap h1 {
+	font-family: var(--font-mono);
 	margin-bottom: 0.75rem;
 }
 
 .descriptionWrap p {
 	position: relative;
 	font-size: 0.85rem;
-	margin: 0;
-	padding: 1rem;
-	background-color: rgba(var(--callout-rgb), 0.5);
-	border: 1px solid rgba(var(--callout-border-rgb), 0.3);
-	border-radius: var(--border-radius);
 	font-family: var(--font-mono);
 	line-height: 1.5;
 }
