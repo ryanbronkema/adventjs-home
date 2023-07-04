@@ -41,7 +41,7 @@ export default function Menu() {
                   <p className="menu-item">French Fries with Ketchup</p>
                   <p className="price">$2.23</p>
                   <button className="btn in-cart">
-                    <img src="images/check.svg" alt="Check" />
+                    <img src="images/check-2.svg" alt="Check" />
                     In Cart
                   </button>
               </div>
