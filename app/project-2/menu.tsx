@@ -4,10 +4,12 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { poppins } from '../fonts';
 import './menu.css';
+import Products from './Products';
+import CartItem from './CartItem';
 import Totals from './totals';
 
 export default function Menu() {
-  const [cart, setCart] = useState<string[]>([]);
+  const [cart, setCart] = useState<{ name: string; img: string; price: string; }[]>([]);
   const [subtotalSum, setSubtotalSum] = useState(0);
   const [isInCart, setIsInCart] = useState<boolean>(false);
   
@@ -50,13 +52,13 @@ export default function Menu() {
     },
   ];
 
-  function add(product: { name: string; }) {
-    setCart((current: string[]) => [...current, product.name]);
+  function add(product: { name: string; img: string; price: string; }) {
+    setCart((current: { name: string; img: string; price: string; }[]) => [...current, product]);
     setIsInCart(true);
   }
 
-  const isIsInCart = (product: string) => {
-    return cart.includes(product);
+  const isIsInCart = (productName: string) => {
+    return cart.some((product) => product.name === productName);
   };
 
   useEffect(() => {
@@ -85,82 +87,26 @@ export default function Menu() {
           <ul className="menu">
 
             {products.map(product => (
-              <li key={product.name}>
-                <div className="plate">
-                  <img src={product.img} alt={product.name} className="plate" />
-                </div>
-                <div className="content">
-                  <p className="menu-item">{product.name}</p>
-                  <p className="price">{product.price}</p>
-                  <button
-                    className="btn"
-                    onClick={() => add(product)}
-                    disabled={isIsInCart(product.name)}
-                  >
-                    {isIsInCart(product.name) ? (
-                      <>
-                      <svg width="22" height="14" viewBox="0 0 22 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.877104 6.28555C1.65815 5.50451 2.92448 5.50451 3.70553 6.28555L7.94817 10.5282L17.8477 0.6287C18.6287 -0.152349 19.895 -0.152348 20.6761 0.6287C21.4571 1.40975 21.4571 2.67608 20.6761 3.45713L7.94817 16.185L0.877104 9.11398C0.0960556 8.33293 0.0960556 7.0666 0.877104 6.28555Z" fill="white"/>
-                      </svg>In Cart
-                      </>
-                    ) : (
-                      'Add to Cart'
-                    )}
-                  </button>
-                </div>
-              </li>
+              <Products 
+                key={product.name}
+                product={product}
+                isIsInCart={isIsInCart}
+                add={add}
+              />
             ))}
 
           </ul>
         </div>
-        {cart}
+
         <div className="panel cart">
           <h2>Your Cart</h2>
           
           <p className="empty">Your cart is empty.</p>
           <ul className="cart-summary">
 
-            <li>
-              <div className="plate">
-                <img src="images/plate__fish-sticks-fries.png" alt="Fish Sticks and Fries" className="plate" />
-                <div className="quantity">1</div>
-              </div>
-              <div className="content">
-                  <p className="menu-item">Fish Sticks and Fries</p>
-                  <p className="price">$6.34</p>
-              </div>
-              <div className="quantity__wrapper">
-                <button className="btn decrease">
-                  <img src="images/chevron.svg" />
-                </button>
-                <div className="quantity">1</div>
-                <button className="btn increase">
-                  <img src="images/chevron.svg" />
-                </button>
-              </div>
-              <div className="subtotal">$6.34</div>
-            </li>
-
-            <li>
-              <div className="plate">
-                <img src="images/plate__french-fries.png" alt="French Fries" className="plate" />
-                <div className="quantity">2</div>
-              </div>
-              <div className="content">
-                <p className="menu-item">French Fries with Ketchup</p>
-                <p className="price">$2.23</p>
-              </div>
-              <div className="quantity__wrapper">
-                <button className="btn decrease">
-                  <img src="images/chevron.svg" />
-                </button>
-                <div className="quantity">2</div>
-                <button className="btn increase">
-                  <img src="images/chevron.svg" />
-                </button>
-              </div>
-              <div className="subtotal">$4.46</div>
-            </li>
+            {cart.map((item) => (
+              <CartItem key={item.name} item={item} />
+            ))}    
           </ul>
 
           <Totals 
