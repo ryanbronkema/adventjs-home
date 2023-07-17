@@ -1,15 +1,15 @@
 export default function Totals(props: { 
-  subtotal: number
+  subtotalSum: number
 }) {
   
-  var taxTotal: number = props.subtotal * 0.07;
-  var grandTotal: number = props.subtotal + taxTotal;
+  var taxTotal: number = props.subtotalSum * 0.07;
+  var grandTotal: number = props.subtotalSum + taxTotal;
 
   return (
     <div className="totals">
       <div className="line-item">
         <div className="label">Subtotal:</div>
-        <div className="amount price subtotal">${props.subtotal.toFixed(2)}</div>
+        <div className="amount price subtotal">${props.subtotalSum.toFixed(2)}</div>
       </div>
       <div className="line-item">
         <div className="label">Tax:</div>

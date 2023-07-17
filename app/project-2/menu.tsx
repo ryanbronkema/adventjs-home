@@ -7,8 +7,42 @@ import './menu.css';
 import Totals from './totals';
 
 export default function Menu() {
-  const [subtotal, setSubtotal] = useState(0);
-    
+  const [cart, setCart] = useState()
+  const [subtotalSum, setSubtotalSum] = useState(0);
+  
+  const products = [
+    {
+      img: 'images/plate__french-fries.png',
+      name: 'French Fries with Ketchup',
+      price: '$2.23'
+    },
+    {
+      img: 'images/plate__salmon-vegetables.png',
+      name: 'Salmon and Vegetables',
+      price: '$5.12'
+    },
+    {
+      img: 'images/plate__spaghetti-meat-sauce.png',
+      name: 'Spaghetti with Meat Sauce',
+      price: '$7.82'
+    },
+    {
+      img: 'images/plate__bacon-eggs.png',
+      name: 'Bacon, Eggs, and Toast',
+      price: '$5.99'
+    },
+    {
+      img: 'images/plate__chicken-salad.png',
+      name: 'Chicken Salad with Parmesan',
+      price: '$6.98'
+    },
+    {
+      img: 'images/plate__fish-sticks-fries.png',
+      name: 'Fish Sticks and Fries',
+      price: '$6.34'
+    },
+  ];
+
   useEffect(() => {
     calculateSubtotal();
   }, []);
@@ -24,7 +58,7 @@ export default function Menu() {
       }
     }
 
-    setSubtotal(sum);
+    setSubtotalSum(sum);
   };
   
   return (
@@ -33,78 +67,37 @@ export default function Menu() {
         <div className="panel">
           <h2>To Go Menu</h2>
           <ul className="menu">
-              <li>
-              <div className="plate">
-                  <img src="images/plate__french-fries.png" alt="French Fries" className="plate" />
-              </div>
-              <div className="content">
-                  <p className="menu-item">French Fries with Ketchup</p>
-                  <p className="price">$2.23</p>
-                  <button className="btn in-cart">
-                    <img src="images/check-2.svg" alt="Check" />
-                    In Cart
+
+            {products.map(product => (
+              <li key={product.name}>
+                <div className="plate">
+                  <img src={product.img} alt={product.name}  className="plate" />
+                </div>
+                <div className="content">
+                  <p className="menu-item">{product.name}</p>
+                  <p className="price">{product.price}</p>
+                  <button className="btn">
+                    {/* <img src="images/check-2.svg" alt="Check" /> */}
+                    Add to cart
                   </button>
-              </div>
+                </div>
+                {/* <div className="selectproduct">
+                  <button onClick={() => add(product)}>+</button><b>{getTotalSelectedAmountPerProduct(cart, product.name)}</b>
+                  <button onClick={() => remove(product)}>-</button>
+                </div> */}
               </li>
-              <li>
-              <div className="plate">
-                  <img src="images/plate__salmon-vegetables.png" alt="Salmon and Vegetables" className="plate" />
-              </div>
-              <div className="content">
-                  <p className="menu-item">Salmon and Vegetables</p>
-                  <p className="price">$5.12</p>
-                  <button className="btn add">Add to Cart</button>
-              </div>
-              </li>
-              <li>
-              <div className="plate">
-                  <img src="images/plate__spaghetti-meat-sauce.png" alt="Spaghetti Meat Sauce" className="plate" />
-              </div>
-              <div className="content">
-                  <p className="menu-item">Spaghetti with Meat Sauce</p>
-                  <p className="price">$7.82</p>
-                  <button className="btn add">Add to Cart</button>
-              </div>
-              </li>
-              <li>
-              <div className="plate">
-                  <img src="images/plate__bacon-eggs.png" alt="Bacon, Eggs, and Toast" className="plate" />
-              </div>
-              <div className="content">
-                  <p className="menu-item">Bacon, Eggs, and Toast</p>
-                  <p className="price">$5.99</p>
-                  <button className="btn add">Add to Cart</button>
-              </div>
-              </li>
-              <li>
-              <div className="plate">
-                  <img src="images/plate__chicken-salad.png" alt="Chicken Salad with Parmesean" className="plate" />
-              </div>
-              <div className="content">
-                  <p className="menu-item">Chicken Salad with Parmesan</p>
-                  <p className="price">$6.98</p>
-                  <button className="btn add">Add to Cart</button>
-              </div>
-              </li>
-              <li>
-              <div className="plate">
-                  <img src="images/plate__fish-sticks-fries.png" alt="Fish Sticks and Fries" className="plate" />
-              </div>
-              <div className="content">
-                  <p className="menu-item">Fish Sticks and Fries</p>
-                  <p className="price">$6.34</p>
-                  <button className="btn add">Add to Cart</button>
-              </div>
-              </li>
+            ))}
+
           </ul>
         </div>
 
         <div className="panel cart">
           <h2>Your Cart</h2>
+          
           <p className="empty">Your cart is empty.</p>
           <ul className="cart-summary">
 
-              <li>
+            <li>
               <div className="plate">
                 <img src="images/plate__fish-sticks-fries.png" alt="Fish Sticks and Fries" className="plate" />
                 <div className="quantity">1</div>
@@ -144,11 +137,11 @@ export default function Menu() {
                 </button>
               </div>
               <div className="subtotal">$4.46</div>
-              </li>
+            </li>
           </ul>
 
           <Totals 
-            subtotal={subtotal}
+            subtotalSum={subtotalSum}
           />
         </div>
       </div>
