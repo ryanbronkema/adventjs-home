@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface CartItemProps {
   item: {
@@ -6,10 +6,19 @@ interface CartItemProps {
     img: string;
     price: string;
   };
+  updateCart: (itemName: string, quantity: number) => void;
 }
 
-const CartItem: React.FC<CartItemProps> = ({ item }) => {
+const CartItem: React.FC<CartItemProps> = ({ item, updateCart }) => {
   const [quantity, setQuantity] = useState(1);
+  const [subtotal, setSubtotal] = useState(0);
+
+  useEffect(() => {
+    const price = parseFloat(item.price.replace('$', ''));
+    const newSubtotal = price * quantity;
+    setSubtotal(newSubtotal);
+    updateCart(item.name, quantity);
+  }, [quantity, item, updateCart]);
 
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
@@ -20,9 +29,6 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
       setQuantity(quantity - 1);
     }
   };
-
-  const price = parseFloat(item.price); // Parse the price to a number
-  const subtotal = price * quantity;
 
   return (
     <li>
@@ -35,11 +41,11 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
       </div>
       <div className="quantity__wrapper">
         <button className="btn decrease" onClick={decreaseQuantity}>
-          <img src="images/chevron.svg" />
+          <img src="images/chevron.svg" alt="Decrease Quantity" />
         </button>
         <div className="quantity">{quantity}</div>
         <button className="btn increase" onClick={increaseQuantity}>
-          <img src="images/chevron.svg" />
+          <img src="images/chevron.svg" alt="Increase Quantity" />
         </button>
       </div>
       <div className="subtotal">${subtotal.toFixed(2)}</div>

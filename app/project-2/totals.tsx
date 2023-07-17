@@ -1,9 +1,20 @@
-export default function Totals(props: { 
-  subtotalSum: number
-}) {
-  
-  var taxTotal: number = props.subtotalSum * 0.07;
-  var grandTotal: number = props.subtotalSum + taxTotal;
+import React, { useEffect, useState } from 'react';
+
+export default function Totals(props: { subtotalSum: number }) {
+  const [taxTotal, setTaxTotal] = useState(0);
+  const [grandTotal, setGrandTotal] = useState(0);
+
+  useEffect(() => {
+    const calculateTotals = () => {
+      const tax = props.subtotalSum * 0.07;
+      const total = props.subtotalSum + tax;
+
+      setTaxTotal(tax);
+      setGrandTotal(total);
+    };
+
+    calculateTotals();
+  }, [props.subtotalSum]);
 
   return (
     <div className="totals">
@@ -20,5 +31,5 @@ export default function Totals(props: {
         <div className="amount price total">${grandTotal.toFixed(2)}</div>
       </div>
     </div>
-  )
+  );
 }
