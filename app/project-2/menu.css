@@ -16,7 +16,7 @@
 }
 
 .panel {
-	background: white;
+	background: var(--background-start-rgb);
 	border-radius: 25px;
 	box-sizing: border-box;
 	box-shadow: 0px 0px 70px #c7cbe3;
@@ -28,6 +28,7 @@
 }
 
 .panel h2 {
+	color: black;
 	padding-left: 40px;
 	font-size: 2rem;
 	font-weight: bold;
@@ -35,6 +36,7 @@
 }
 
 ul.menu li {
+	color: black;
 	margin-left: 15px;
 	display: flex;
 	padding-right: 30px;
@@ -133,6 +135,8 @@ button.in-cart {
 }
 
 .cart p.empty {
+	display: none;
+	color: black;
 	padding-left: 40px;
 }
 
@@ -236,6 +240,7 @@ button.in-cart {
 }
 
 .cart-summary li {
+	color: black;
 	border-bottom: 1px solid #d7d7f9;
 	margin-bottom: 45px;
 	padding-bottom: 45px;
@@ -251,6 +256,7 @@ button.in-cart {
 }
 
 .totals {
+	color: black;
 	padding: 35px 30px;
 }
 
