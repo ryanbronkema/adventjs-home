@@ -6,7 +6,7 @@ import { poppins } from '../fonts';
 import './menu.css';
 import Products from './Products';
 import CartItem from './CartItem';
-import Totals from './Totals';
+import Totals from './totals';
 
 interface Product {
   img: string;
