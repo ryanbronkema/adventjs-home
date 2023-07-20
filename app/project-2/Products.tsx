@@ -5,9 +5,10 @@ interface ProductsProps {
     name: string;
     img: string;
     price: string;
+    quantity: number;
   };
   isIsInCart: (productName: string) => boolean;
-  add: (product: { name: string; img: string; price: string; }) => void;
+  add: (product: { name: string; img: string; price: string; quantity: number; }) => void;
 }
 
 const Products: React.FC<ProductsProps> = ({ product, isIsInCart, add }) => {

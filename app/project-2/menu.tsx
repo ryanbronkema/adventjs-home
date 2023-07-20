@@ -8,57 +8,64 @@ import Products from './Products';
 import CartItem from './CartItem';
 import Totals from './Totals';
 
+interface Product {
+  img: string;
+  name: string;
+  price: string;
+  quantity: number;
+}
+
+interface CartItem {
+  name: string;
+  img: string;
+  price: string;
+  quantity: number;
+}
+
 export default function Menu() {
-  const [cart, setCart] = useState<{ name: string; img: string; price: string; quantity: number; }[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
   const [subtotalSum, setSubtotalSum] = useState(0);
-  const [isInCart, setIsInCart] = useState<boolean>(false);
-  
-  const products = [
+
+  const products: Product[] = [
     {
-      id: 1,
       img: 'images/plate__french-fries.png',
       name: 'French Fries with Ketchup',
-      price: '$2.23',
+      price: '$3.99',
       quantity: 1,
     },
     {
-      id: 2,
       img: 'images/plate__salmon-vegetables.png',
       name: 'Salmon and Vegetables',
-      price: '$5.12',
+      price: '$10.99',
       quantity: 1,
     },
     {
-      id: 3,
       img: 'images/plate__spaghetti-meat-sauce.png',
       name: 'Spaghetti with Meat Sauce',
-      price: '$7.82',
+      price: '$6.99',
       quantity: 1,
     },
     {
-      id: 4,
       img: 'images/plate__bacon-eggs.png',
       name: 'Bacon, Eggs, and Toast',
-      price: '$5.99',
+      price: '$6.99',
       quantity: 1,
     },
     {
-      id: 5,
       img: 'images/plate__chicken-salad.png',
       name: 'Chicken Salad with Parmesan',
-      price: '$6.98',
+      price: '$8.99',
       quantity: 1,
     },
     {
-      id: 6,
       img: 'images/plate__fish-sticks-fries.png',
       name: 'Fish Sticks and Fries',
-      price: '$6.34',
+      price: '$7.99',
       quantity: 1,
     },
   ];
 
-  function add(product: { name: string; img: string; price: string }) {
+  function add(product: Product) {
     const existingItem = cart.find((item) => item.name === product.name);
     if (existingItem) {
       const updatedCart = cart.map((item) =>
@@ -68,7 +75,13 @@ export default function Menu() {
     } else {
       setCart((current) => [...current, { ...product, quantity: 1 }]);
     }
-    setIsInCart(true);
+  }
+
+  function updateCart(itemName: string, quantity: number) {
+    const updatedCart = cart.map((item) =>
+      item.name === itemName ? { ...item, quantity } : item
+    );
+    setCart(updatedCart);
   }
 
   useEffect(() => {
@@ -94,41 +107,37 @@ export default function Menu() {
         <div className="panel">
           <h2>To Go Menu</h2>
           <ul className="menu">
-
-            {products.map(product => (
-              <Products 
+            {products.map((product) => (
+              <Products
                 key={product.name}
                 product={product}
                 isIsInCart={isIsInCart}
                 add={add}
               />
             ))}
-
           </ul>
         </div>
 
         <div className="panel cart">
           <h2>Your Cart</h2>
-          
-          <p className="empty">Your cart is empty.</p>
-          <ul className="cart-summary">
 
-            {cart.map((item) => (
-              <CartItem key={item.name} item={item} updateCart={(itemName, quantity) => {
-                const updatedCart = cart.map((item) =>
-                  item.name === itemName ? { ...item, quantity: quantity } : item
-                );
-                setCart(updatedCart); 
-                }}  />
-            ))}
+          {cart.length === 0 ? (
+            <p className="empty">Your cart is empty.</p>
+          ) : (
+            <ul className="cart-summary">
+              {cart.map((item) => (
+                <CartItem
+                  key={item.name}
+                  item={item}
+                  updateCart={updateCart}
+                />
+              ))}
+            </ul>
+          )}
 
-          </ul>
-
-          <Totals 
-            subtotalSum={subtotalSum}
-          />
+          <Totals subtotalSum={subtotalSum} />
         </div>
       </div>
     </main>
-  )
+  );
 }
