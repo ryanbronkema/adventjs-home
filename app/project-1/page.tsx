@@ -9,7 +9,7 @@ export default function Page() {
       <Timer />
       <ProjectDescription 
         pageTitle="Pomodoro Timer" 
-        pageDescription="Test description lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+        pageDescription="This page is a timer application. It allows users to set a countdown time, start, pause, and reset the timer. Users can also access settings to edit the timer duration."
       />
     </div>
   );
