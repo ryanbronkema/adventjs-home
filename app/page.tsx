@@ -50,9 +50,9 @@ export default function Home() {
 
           <Link href="/project-3" className={styles.card}>
             <h3>
-              Project 3 <span>-&gt;</span>
+              SFX Piano <span>-&gt;</span>
             </h3>
-            <p>Piano</p>
+            <p>A virtual piano that plays corresponding audio files when the keys are clicked.iano</p>
           </Link>
 
           <Link href="/project-4/" className={styles.card}>

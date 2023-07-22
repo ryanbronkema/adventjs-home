@@ -8,8 +8,8 @@ export default function Page() {
       <BackArrow />
       <Piano />
       <ProjectDescription 
-        pageTitle="Piano" 
-        pageDescription="Description"
+        pageTitle="SFX Piano" 
+        pageDescription="This project creates a virtual piano component where each key, represented by SVG paths, plays a corresponding audio file when clicked."
       />
     </div>
   );
