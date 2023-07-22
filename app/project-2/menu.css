@@ -135,7 +135,6 @@ button.in-cart {
 }
 
 .cart p.empty {
-	display: none;
 	color: black;
 	padding-left: 40px;
 }

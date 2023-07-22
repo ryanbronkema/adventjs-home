@@ -124,8 +124,8 @@ export default function Menu() {
 
         <div className="panel cart">
           <h2>Your Cart</h2>
-
-          {cart.length === 0 ? (
+          
+          {cart.length === 0 || getCartItemsWithQuantity().length === 0 ? (
             <p className="empty">Your cart is empty.</p>
           ) : (
             <ul className="cart-summary">
@@ -136,13 +136,6 @@ export default function Menu() {
                   updateCart={updateCart}
                 />
               ))}
-              {/* {cart.map((item) => (
-                <CartItem
-                  key={item.name}
-                  item={item}
-                  updateCart={updateCart}
-                />
-              ))} */}
             </ul>
           )}
 
