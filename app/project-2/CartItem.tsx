@@ -27,6 +27,8 @@ const CartItem: React.FC<CartItemProps> = ({ item, updateCart }) => {
   const decreaseQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
+    } else {
+      setQuantity(0);
     }
   };
 

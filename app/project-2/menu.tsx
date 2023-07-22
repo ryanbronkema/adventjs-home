@@ -84,6 +84,10 @@ export default function Menu() {
     setCart(updatedCart);
   }
 
+  function getCartItemsWithQuantity() {
+    return cart.filter((item) => item.quantity > 0);
+  }
+
   useEffect(() => {
     calculateSubtotalSum();
   }, [cart]);
@@ -98,7 +102,7 @@ export default function Menu() {
   }
 
   const isIsInCart = (productName: string) => {
-    return cart.some((product) => product.name === productName);
+    return cart.some((product) => product.name === productName && product.quantity > 0);
   };
   
   return (
@@ -125,13 +129,20 @@ export default function Menu() {
             <p className="empty">Your cart is empty.</p>
           ) : (
             <ul className="cart-summary">
-              {cart.map((item) => (
-                <CartItem
+              {getCartItemsWithQuantity().map((item) => (
+                <CartItem 
                   key={item.name}
                   item={item}
                   updateCart={updateCart}
                 />
               ))}
+              {/* {cart.map((item) => (
+                <CartItem
+                  key={item.name}
+                  item={item}
+                  updateCart={updateCart}
+                />
+              ))} */}
             </ul>
           )}
 
