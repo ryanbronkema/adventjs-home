@@ -1,19 +1,23 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import styles from './page.module.css'
+import Image from "next/image";
+import Link from "next/link";
+import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
         <p>
-          See this code collection<br />
+          See this code collection
+          <br />
           <a href="https://github.com/ryanbronkema/" target="_blank">
-            <code className={styles.code}>https://github.com/ryanbronkema/</code>
+            <code className={styles.code}>
+              https://github.com/ryanbronkema/
+            </code>
           </a>
         </p>
         <p>
-          Check out my other work<br />
+          Check out my other work
+          <br />
           <a href="https://ryanbronkema.com/" target="_blank">
             <code className={styles.code}>https://ryanbronkema.com/</code>
           </a>
@@ -38,7 +42,10 @@ export default function Home() {
             <h3>
               Pomodoro timer <span>-&gt;</span>
             </h3>
-            <p>A countdown timer that can be started, paused, and set to an custom duration.</p>
+            <p>
+              A countdown timer that can be started, paused, and set to an
+              custom duration.
+            </p>
           </Link>
 
           <Link href="/project-2" className={styles.card}>
@@ -52,18 +59,27 @@ export default function Home() {
             <h3>
               SFX Piano <span>-&gt;</span>
             </h3>
-            <p>A virtual piano that plays corresponding audio files when the keys are clicked.iano</p>
+            <p>
+              A virtual piano that plays corresponding audio files when the keys
+              are clicked.
+            </p>
           </Link>
 
           <Link href="/project-4/" className={styles.card}>
             <h3>
-              Project 4 <span>-&gt;</span>
+              Eyes on the Screen <span>-&gt;</span>
             </h3>
-            <p>Blah blah blah...</p>
+            <p>A keyboard with a jiggling key that moves when clicked.</p>
           </Link>
-          
+
+          <Link href="/project-5/" className={styles.card}>
+            <h3>
+              Eyes on the Screen <span>-&gt;</span>
+            </h3>
+            <p>A list of podcast checkboxes that can be shift-clicked.</p>
+          </Link>
         </div>
       </div>
     </main>
-  )
+  );
 }
