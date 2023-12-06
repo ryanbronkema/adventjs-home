@@ -74,7 +74,7 @@ export default function Home() {
 
           <Link href="/project-5/" className={styles.card}>
             <h3>
-              Eyes on the Screen <span>-&gt;</span>
+              Multiple Checkboxes <span>-&gt;</span>
             </h3>
             <p>A list of podcast checkboxes that can be shift-clicked.</p>
           </Link>
