@@ -72,12 +72,12 @@ export default function Home() {
             <p>A keyboard with a jiggling key that moves when clicked.</p>
           </Link>
 
-          <Link href="/project-5/" className={styles.card}>
+          {/* <Link href="/project-5/" className={styles.card}>
             <h3>
               Multiple Checkboxes <span>-&gt;</span>
             </h3>
             <p>A list of podcast checkboxes that can be shift-clicked.</p>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </main>
